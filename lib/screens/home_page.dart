@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:todo/constants/colors.dart';
 import 'package:todo/model/todo.dart';
@@ -13,7 +14,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final todosList = ToDo.todoList();
+  List<ToDo> _foundToDo = [];
   final _todoController = TextEditingController();
+
+  @override
+  void initState() {
+    _foundToDo = todosList;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                       ),
-                      for (ToDo todo in todosList)
+                      for (ToDo todo in _foundToDo.reversed)
                         ToDoItems(
                           todoExp: todo,
                           onToDoChange: _handelToChange,
@@ -113,12 +121,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       elevation: 10,
                       backgroundColor: tdBlue,
                     ),
-                    child: const Text(
-                      '+',
-                      style: TextStyle(
-                        fontSize: 40,
-                        color: Colors.white,
-                      ),
+                    child: const FaIcon(
+                      FontAwesomeIcons.plus,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -128,6 +133,23 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
+  }
+
+  void _runfilter(String enteredKeyword) {
+    List<ToDo> results = [];
+    if (enteredKeyword.isEmpty) {
+      results = todosList;
+    } else {
+      results = todosList
+          .where((item) => item.todoText!
+              .toLowerCase()
+              .contains(enteredKeyword.toLowerCase()))
+          .toList();
+
+      setState(() {
+        _foundToDo = results;
+      });
+    }
   }
 
   void _handelToChange(ToDo todo) {
@@ -162,8 +184,9 @@ class _MyHomePageState extends State<MyHomePage> {
           20,
         ),
       ),
-      child: const TextField(
-        decoration: InputDecoration(
+      child: TextField(
+        onChanged: (value) => _runfilter(value),
+        decoration: const InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.all(
             10,

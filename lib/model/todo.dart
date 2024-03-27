@@ -13,12 +13,12 @@ class ToDo {
     return [
       ToDo(
         id: '01',
-        todoText: 'Email password!',
+        todoText: '7 am to Gym',
         isDone: true,
       ),
       ToDo(
         id: '02',
-        todoText: 'Check Email',
+        todoText: 'Foods to buy:',
         isDone: true,
       ),
       ToDo(
@@ -27,11 +27,11 @@ class ToDo {
       ),
       ToDo(
         id: '04',
-        todoText: 'Duckduckgo',
+        todoText: 'Daniel 50euro',
       ),
       ToDo(
         id: '05',
-        todoText: 'Books:',
+        todoText: 'Book: Krimi kibernetik',
       ),
     ];
   }
