@@ -1,16 +1,9 @@
 # todo
 
-A new Flutter project.
 
-## Getting Started
+The purpose of NoteApp is to store data in a local cache where you can save daily notes.
 
-This project is a starting point for a Flutter application.
+#Watch the video for more
 
-A few resources to get you started if this is your first Flutter project:
+https://github.com/ValiiJ/ToDoApp/assets/85800317/f97dd850-d1ae-4ebd-a49e-6e679e7de1f9
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
